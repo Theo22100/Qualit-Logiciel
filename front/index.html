@@ -14,7 +14,7 @@
       <h1 class="max-w-md mx-auto my-8 bg-white p-6 text-center">Connexion</h1>
       <form class="max-w-md mx-auto my-8 bg-white p-6 rounded-md shadow-md">
         <label class="block mb-2 text-sm font-bold text-gray-600" for="nom"
-          >Nom</label
+          >Nom<span class="red">*</span></label
         >
         <input
           class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
@@ -22,12 +22,13 @@
           name="nom"
           id="nom"
           placeholder="Nom"
+          required
         />
 
         <label
           class="block mt-4 mb-2 text-sm font-bold text-gray-600"
           for="prenom"
-          >Prénom</label
+          >Prénom*</label
         >
         <input
           class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
@@ -35,12 +36,13 @@
           name="prenom"
           id="prenom"
           placeholder="Prénom"
+          required
         />
 
         <label
           class="block mt-4 mb-2 text-sm font-bold text-gray-600"
           for="email"
-          >Email</label
+          >Email*</label
         >
         <input
           class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
@@ -48,12 +50,13 @@
           name="email"
           id="email"
           placeholder="Email"
+          required
         />
 
         <label
           class="block mt-4 mb-2 text-sm font-bold text-gray-600"
           for="password"
-          >Mot de passe</label
+          >Mot de passe*</label
         >
         <input
           class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
@@ -61,6 +64,7 @@
           name="password"
           id="password"
           placeholder="Mot de passe"
+          required
         />
 
         <input
