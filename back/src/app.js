@@ -1,6 +1,6 @@
-const express = require('express'); // Include ExpressJS
-const app = express(); // Create an ExpressJS app
-const bodyParser = require('body-parser'); // Middleware
+const express = require('express'); 
+const app = express(); 
+const bodyParser = require('body-parser'); 
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -12,13 +12,11 @@ app.get('/', (req, res) => {
 
 
 app.post('/login', (req, res) => {
-  // Insert Login Code Here
   let username = req.body.username;
   let password = req.body.password;
   res.send(`Username: ${username} Password: ${password}`);
 });
 
-const port = 3000 // Port we will listen on
+const port = 3000 
 
-// Function to listen on the port
 app.listen(port, () => console.log(`This app is listening on port ${port}`));
