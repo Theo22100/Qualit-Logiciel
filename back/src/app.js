@@ -6,7 +6,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Route to Homepage
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '../front/index.html'); //a fix mauvais url
+  const indexPath = `${__dirname}/../front/index.html`;
+  res.sendFile(indexPath);
 });
 
 
