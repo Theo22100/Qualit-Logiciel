@@ -4,16 +4,7 @@ const session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser'); // middleware
 
-
-const mysql = require('mysql');
-
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'qualite'
-});
-
+const dbConnection = require('./database.js');
 
 app.use(session({
 	secret: 'secret',
@@ -32,8 +23,8 @@ app.post('/connexion', (request, response) => {
   let password = request.body.password;
   console.log(email);
   if (email && password) {
-    // Execute SQL query that'll select the account from the database based on the specified email and password
-    connection.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
+    // Execute SQL
+    dbConnection.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
       // Error
       if (error) {
         console.error(error);
@@ -49,6 +40,7 @@ app.post('/connexion', (request, response) => {
         response.redirect('/profile');
       } else {
         response.send('Incorrect Email and/or Password!');
+        
       }
       response.end();
     });

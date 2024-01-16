@@ -1,14 +1,14 @@
 const mysql = require('mysql');
 
 //connexion BDD
-const connection = mysql.createConnection({
+const dbConnection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
   database: 'qualite'
 });
 
-connection.connect((err) => {
+dbConnection.connect((err) => {
   if (err) {
     console.error('Erreur de connexion à la base de données :', err);
     throw err;
@@ -18,4 +18,4 @@ connection.connect((err) => {
 });
 
 // Exporte connexion
-module.exports = connection;
+module.exports = dbConnection;
