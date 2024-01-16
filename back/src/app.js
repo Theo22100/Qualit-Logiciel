@@ -13,9 +13,9 @@ app.get('/', (req, res) => {
 
 
 app.post('/login', (req, res) => {
-  let username = req.body.username;
+  let email = req.body.email;
   let password = req.body.password;
-  res.send(`Username: ${username} Password: ${password}`);
+  res.send(`Email: ${email} Password: ${password}`);
 });
 
 const port = 3000 
