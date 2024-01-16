@@ -21,7 +21,6 @@ app.get('/', (request, response) => {
 app.post('/connexion', (request, response) => {
   let email = request.body.email;
   let password = request.body.password;
-  console.log(email);
   if (email && password) {
     // Execute SQL
     dbConnection.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
