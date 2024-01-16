@@ -1,14 +1,15 @@
 const express = require('express'); 
 const app = express(); 
 const bodyParser = require('body-parser'); 
+const path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Route to Homepage
 app.get('/', (req, res) => {
-  const indexPath = `${__dirname}/../front/index.html`;
+  const indexPath = path.join(__dirname, '..', '..', 'front', 'index.html');
   res.sendFile(indexPath);
 });
+
 
 
 app.post('/login', (req, res) => {
