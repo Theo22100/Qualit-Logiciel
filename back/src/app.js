@@ -1,32 +1,23 @@
-import express from 'express';
-import { query as _query } from '../back/src/database'; 
-const app = express();
+const express = require('express'); // Include ExpressJS
+const app = express(); // Create an ExpressJS app
+const bodyParser = require('body-parser'); // Middleware
 
-// Analyse form
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-// Gestion form
-app.post('/connexion', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    console.log('Email :', email);
-    console.log('Mot de passe :', password);
-
-    // Requête
-    const query = 'SELECT email, password FROM user WHERE email = ? AND password = ?';
-    const results = await _query(query, [email, password]);
-
-    if (results.length > 0) {
-      console.log('Utilisateur trouvé :', results[0]);
-      res.redirect('/profil');
-    } else {
-      console.log('Utilisateur non trouvé');
-      res.redirect('/index?error=auth');
-    }
-  } catch (error) {
-    console.error('Erreur lors de l\'exécution de la requête :', error);
-    res.redirect('/index?error=db');
-  }
+// Route to Homepage
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '../front/index.html'); //a fix mauvais url
 });
 
 
+app.post('/login', (req, res) => {
+  // Insert Login Code Here
+  let username = req.body.username;
+  let password = req.body.password;
+  res.send(`Username: ${username} Password: ${password}`);
+});
+
+const port = 3000 // Port we will listen on
+
+// Function to listen on the port
+app.listen(port, () => console.log(`This app is listening on port ${port}`));
