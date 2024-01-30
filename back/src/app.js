@@ -63,8 +63,8 @@ app.get('/profile', function (request, response) {
 });
 
 app.use((request, response) => {
-  const erreur401Path = path.join(__dirname, '..', '..', 'front', 'error404.html');
-  response.status(404).sendFile(erreur401Path);
+  const erreur404Path = path.join(__dirname, '..', '..', 'front', 'error404.html');
+  response.status(404).sendFile(erreur404Path);
 });
 
 const port = 3000;
