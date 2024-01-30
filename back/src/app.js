@@ -45,17 +45,6 @@ app.post('/connexion', (request, response) => {
   }
 });
 
-app.get('/profile', function(request, response) {
-	if (request.session.loggedin) {
-		response.send('Bienvenue, ' + request.session.email + '!');
-	} else {
-		response.send('Please login to view this page!');
-	}
-	response.end();
-
-
-
-
 
 app.get('/profile', function (request, response) {
   if (request.session.loggedin) {
