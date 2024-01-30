@@ -7,7 +7,7 @@ const bodyParser = require('body-parser'); // middleware
 const dbConnection = require('./database.js');
 
 app.use(session({
-  secret: 'secret',
+  secret: '?aqyDJx!qox3Kq3E?$3mYb@iKdLyTfrpoeFzg5eT',
   resave: true,
   saveUninitialized: true
 }));
