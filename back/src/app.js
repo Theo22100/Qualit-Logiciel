@@ -48,12 +48,11 @@ app.post('/connexion', (request, response) => {
 
 app.get('/profile', function (request, response) {
   if (request.session.loggedin) {
-    const indexPath2 = path.join(__dirname, '..', '..', 'front', 'profile.html');
-    response.sendFile(indexPath2);
+    const profilePath = path.join(__dirname,'..' ,'..', 'front', 'profile.html');
+    response.sendFile(profilePath);
   } else {
     response.send('Please login to view this page!');
   }
-  response.end(); 
 });
 
 const port = 3000;
