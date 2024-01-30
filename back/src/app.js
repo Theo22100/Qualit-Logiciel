@@ -57,7 +57,8 @@ app.get('/profile', function (request, response) {
     const profilePath = path.join(__dirname,'..' ,'..', 'front', 'profile.html');
     response.sendFile(profilePath);
   } else {
-    response.send('Please login to view this page!');
+    const erreur401Path = path.join(__dirname, '..', '..', 'front', 'error401.html');
+    response.status(401).sendFile(erreur401Path);
   }
 });
 
