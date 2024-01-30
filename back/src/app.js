@@ -18,6 +18,11 @@ app.get('/', (request, response) => {
   response.sendFile(indexPath);
 });
 
+app.get('/index', (request, response) => {
+  const indexPath = path.join(__dirname, '..', '..', 'front', 'index.html');
+  response.sendFile(indexPath);
+});
+
 app.post('/connexion', (request, response) => {
   let email = request.body.email;
   let password = request.body.password;
@@ -26,7 +31,8 @@ app.post('/connexion', (request, response) => {
     dbConnection.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
       if (error) {
         console.error(error);
-        response.status(500).send('Internal Server Error');
+        const error500Path = path.join(__dirname, '..', '..', 'front', 'error500.html');
+        response.status(500).sendFile(error500Path);
         return; 
       }
 
@@ -53,6 +59,11 @@ app.get('/profile', function (request, response) {
   } else {
     response.send('Please login to view this page!');
   }
+});
+
+app.use((request, response) => {
+  const erreur401Path = path.join(__dirname, '..', '..', 'front', 'error404.html');
+  response.status(404).sendFile(erreur401Path);
 });
 
 const port = 3000;
