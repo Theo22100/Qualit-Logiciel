@@ -24,7 +24,6 @@ app.post('/connexion', (request, response) => {
 
   if (email && password) {
     dbConnection.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
-    dbConnection.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], function (error, results, fields) {
       if (error) {
         console.error(error);
         response.status(500).send('Internal Server Error');
