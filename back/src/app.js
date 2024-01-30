@@ -23,6 +23,7 @@ app.post('/connexion', (request, response) => {
   let password = request.body.password;
 
   if (email && password) {
+    dbConnection.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
     dbConnection.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], function (error, results, fields) {
       if (error) {
         console.error(error);
@@ -45,6 +46,13 @@ app.post('/connexion', (request, response) => {
   }
 });
 
+app.get('/profile', function(request, response) {
+	if (request.session.loggedin) {
+		response.send('Bienvenue, ' + request.session.email + '!');
+	} else {
+		response.send('Please login to view this page!');
+	}
+	response.end();
 
 
 
