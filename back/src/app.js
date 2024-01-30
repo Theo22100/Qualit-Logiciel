@@ -14,8 +14,10 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (request, response) => {
+  const error = request.query.error === 'incorrect' ? 'Wrong Password or/and Wrong MailMot de passe incorrect/utilisateur incorrect' : '';
   const indexPath = path.join(__dirname, '..', '..', 'front', 'index.html');
   response.sendFile(indexPath);
+  
 });
 
 app.get('/index', (request, response) => {
@@ -41,8 +43,7 @@ app.post('/connexion', (request, response) => {
         request.session.email = email;
         response.redirect('/profile');
       } else {
-        response.send('Incorrect Email and/or Password!');
-        response.end(); 
+        response.redirect('/index?error=incorrect');
       }
     });
   } else {
